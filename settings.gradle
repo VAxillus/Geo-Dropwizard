@@ -1,0 +1,4 @@
+rootProject.name = 'Geo'
+
+include 'Geo-server'
+include 'Geo-distribution'
