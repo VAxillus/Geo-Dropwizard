@@ -10,7 +10,10 @@ apply plugin: 'java'
 dependencies {
     compile "io.dropwizard:dropwizard-core:$dropwizardVersion"
     compile "io.dropwizard:dropwizard-jdbi:$dropwizardVersion"
-    compile "org.postgresql:postgresql:$postgresqlVersion"
+   // compile "mysql:mysql-connector-java:5.1.16:$postgresqlVersion"
+    compile "org.mariadb.jdbc:mariadb-java-client"
+    compile "redis.clients:jedis:2.9.0"
+    compile "com.google.code.gson:gson:2.8.2"
     compile "commons-codec:commons-codec:$commonsCodecVersion"
     compile "io.dropwizard-bundles:dropwizard-configurable-assets-bundle:$dropwizardConfigurableAssetsBundleVersion"
 

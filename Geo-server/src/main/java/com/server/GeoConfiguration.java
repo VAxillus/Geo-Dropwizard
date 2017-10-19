@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.Configuration;
 import io.dropwizard.setup.Environment;
 
+
 /**
  * Server configuration for the Geo API server.
  */
@@ -26,6 +27,8 @@ public final class GeoConfiguration extends Configuration {
     public DatabaseConfiguration getDatabaseConfiguration() { return databaseConfiguration; }
 
     public DatabaseBackend getDatabaseBackend(Environment environment) {
-        return databaseConfiguration.createDBI(environment, "jdbi-backend").onDemand(DatabaseBackend.class);
+        return databaseConfiguration.createDBI(environment, "jdbi-mariadb-backend").onDemand(DatabaseBackend.class);
     }
+
+
 }
