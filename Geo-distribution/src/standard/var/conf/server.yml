@@ -3,16 +3,23 @@
 
 database:
   connection:
-    driverClass: org.postgresql.Driver
-    user: db_user
-    password: db_pass
-    url: jdbc:postgresql://localhost/dbname
+    driverClass: org.mariadb.jdbc.Driver
+    user: app
+    password: apppassword
+    url: jdbc:mariadb://localhost/CDB
+    #maxWaitForConnection: 10s
+    #validationQuery: "/* MyService Health Check */ SELECT 1"
+
+
 
 # =============================================
 #                Server Settings
 # =============================================
 # See for details: https://dropwizard.github.io/dropwizard/manual/configuration.html#servers
 server:
+  allowedMethods:
+    - GET
+    - POST
   applicationConnectors:
     - type: http
       port: 8000
@@ -20,7 +27,7 @@ server:
       port: 8443
       excludedProtocols: [SSLv3]
       supportedProtocols: [TLSv1, TLSv1.1, TLSv1.2]
-      keyStorePath: var/conf/keyStore.jks
+      keyStorePath: Geo-distribution/src/standard/var/conf/keyStore.jks
       keyStorePassword: dropwizard-angular-gradle
       validateCerts: false
   applicationContextPath: /
@@ -31,21 +38,22 @@ server:
   requestLog:
     appenders:
       - type: file
-        currentLogFilename: var/log/requests.log
-        archivedLogFilenamePattern: var/log/requests-%d.log
+        currentLogFilename: Geo-distribution/var/log/requests.log
+        archivedLogFilenamePattern: Geo-distribution/src/standard/var/log/requests-%d.log
         archivedFileCount: 5
-        timeZone: UTC
+        timeZone: GMT+1
         threshold: INFO
   rootPath: /api/*
+
 
 # See for details: https://dropwizard.github.io/dropwizard/manual/configuration.html#logging
 logging:
   appenders:
     - type: file
-      currentLogFilename: var/log/server.log
-      archivedLogFilenamePattern: var/log/server-%d.log
+      currentLogFilename: Geo-distribution/src/standard/var/log/server.log
+      archivedLogFilenamePattern: Geo-distribution/src/standard/var/log/server-%d.log
       archivedFileCount: 5
-      timeZone: UTC
+      timeZone: GMT+1
       threshold: INFO
     - type: console
       threshold: INFO
